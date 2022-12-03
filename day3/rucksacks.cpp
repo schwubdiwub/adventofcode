@@ -46,6 +46,18 @@ struct Rucksack {
     }
 };
 
+char findGroupItem(const Rucksack& first, const Rucksack& second, const Rucksack& third) noexcept
+{
+    for(auto it = first._contents.begin(); it != first._contents.end(); ++it) {
+        const bool secondHasIt = std::ranges::find(second._contents, *it) != second._contents.end();
+        const bool thirdHasIt = std::ranges::find(third._contents, *it) != third._contents.end();
+        if(secondHasIt & thirdHasIt) {
+            return *it;
+        }
+    }
+    return '\0';
+}
+
 std::vector<Rucksack> parseRucksacks(std::string_view filepath) noexcept
 {
     std::vector<Rucksack> rucksacks;
@@ -73,6 +85,16 @@ int main()
 
     const auto prioritiesSum = std::accumulate(rucksacks.begin(), rucksacks.end(), 0ULL, [](uint64_t v, const Rucksack& r){ return v + r.duplicatePrioritiesSum(); });
     std::cout << std::format("The sum of the priorities of the items in both compartments is: {}\n", prioritiesSum);
+
+    std::cout << "Part 2:\n";
+
+    uint64_t groupItemPrioritySum = 0;
+    for(size_t i = 0; i < rucksacks.size(); i += 3) {
+        const char groupItem = findGroupItem(rucksacks[i], rucksacks[i + 1], rucksacks[i + 2]);
+        groupItemPrioritySum += itemPriority(groupItem);
+    }
+
+    std::cout << std::format("The sum of the priorities of the group items is: {}\n", groupItemPrioritySum);
 
     return 0;
 }

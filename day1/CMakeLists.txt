@@ -1,5 +1,3 @@
-cmake_minimum_required(VERSION 3.21)
-
 add_executable(aoc_day1)
 
 target_sources(aoc_day1 PRIVATE calories.cpp)

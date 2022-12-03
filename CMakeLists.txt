@@ -5,3 +5,4 @@ project(adventofcode)
 set(CMAKE_CXX_STANDARD 20)
 
 add_subdirectory(day1)
+add_subdirectory(day2)

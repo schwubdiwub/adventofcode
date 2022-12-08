@@ -17,13 +17,13 @@ struct Range {
     bool valid() const noexcept { return lowerBound <= upperBound; }
     bool contains(const Range& other) const noexcept
     {
-        return lowerBound <= other.lowerBound & upperBound >= other.upperBound;
+        return lowerBound <= other.lowerBound & other.upperBound <= upperBound;
     }
 
     bool containsAtLeastOneBound(const Range& other) const noexcept
     {
-        const bool containsLowerBound = lowerBound <= other.lowerBound & upperBound >= other.lowerBound;
-        const bool containsUpperBound = lowerBound <= other.upperBound & upperBound >= other.upperBound;
+        const bool containsLowerBound = lowerBound <= other.lowerBound & other.lowerBound <= upperBound;
+        const bool containsUpperBound = lowerBound <= other.upperBound & other.upperBound <= upperBound;
         return containsLowerBound | containsUpperBound;
     }
 };

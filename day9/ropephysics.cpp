@@ -197,7 +197,7 @@ RopeLike parseAndRunInput(std::string_view filepath) noexcept
 {
     RopeLike ropeLike;
 
-    std::regex commandRegex("^([UDLR]) (\\d+)");
+    std::regex commandRegex("^([UDLR]) (\\d+)$");
     std::smatch subMatches;
 
     std::ifstream file(filepath.data());

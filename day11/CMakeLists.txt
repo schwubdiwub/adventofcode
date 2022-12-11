@@ -1,0 +1,6 @@
+add_executable(aoc_day11)
+
+target_sources(aoc_day11 PRIVATE monkeyprediction.cpp)
+
+configure_file(monkeyprediction_input ${CMAKE_CURRENT_BINARY_DIR}/monkeyprediction_input COPYONLY)
+configure_file(monkeyprediction_input_test ${CMAKE_CURRENT_BINARY_DIR}/monkeyprediction_input_test COPYONLY)

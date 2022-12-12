@@ -6,6 +6,7 @@
 #include <fstream>
 #include <iostream>
 #include <numeric>
+#include <optional>
 #include <regex>
 #include <string>
 #include <string_view>
